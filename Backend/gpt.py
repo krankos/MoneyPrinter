@@ -23,7 +23,7 @@ def generate_script(video_subject: str) -> str:
     Generate a script for a video, depending on the subject of the video.
     Subject: {video_subject}
 
-    The script is to be returned as a string.
+    The script is to be returned as a string. A paragraph or two is enough.
 
     Here is an example of a string:
     "This is an example string."
@@ -32,19 +32,32 @@ def generate_script(video_subject: str) -> str:
 
     Get straight to the point, don't start with unnecessary things like, "welcome to this video".
 
+    The script is not an introduction, it is a script about the subject. It is not a highlight or a summary or an overview.
+
     Obviously, the script should be related to the subject of the video.
 
-    ONLY RETURN THE RAW SCRIPT. DO NOT RETURN ANYTHING ELSE.
+    THE VIDEO IS NOT AN INTRODUCTION VIDEO, IT IS A VIDEO ABOUT THE SUBJECT.
 
     DO NOT FORMAT THE SCRIPT IN ANY WAY.
 
     MAKE SURE THE SCRIPT IS SHORT AND TO THE POINT.
+
+    DO NOT START THE RESPONSE WITH AN 'Hello this is Copilot' or similar.
+
+    DO NOT START WITH AN INTRODUCTORY SENTENCE or similar.
+
+    DO NOT MENTION THE SCRIPT IN YOUR RESPONSE.
+
+    REFORMULATE THE RESPONSE TO GET ONE COHERENT PARAGRAPH.
+
+    DO NOT WRITE AN INTRODUCTION OF ANY KIND.
+
+    REMOVE ANY UNNECESSARY SPACES OR LINE BREAKS AND ALL FORMATTING.
     """
 
     # Generate script
     response = g4f.ChatCompletion.create(
         model=g4f.models.gpt_35_turbo_16k_0613,
-        provider=Bing,
         messages=[{"role": "user", "content": prompt}],
     )
 
@@ -91,6 +104,12 @@ def get_search_terms(video_subject: str, amount: int, script: str) -> List[str]:
 
     ONLY RETURN THE JSON-ARRAY OF STRINGS.
     DO NOT RETURN ANYTHING ELSE.
+
+    DO NOT START THE RESPONSE WITH AN INTRO TO WHO YOU ARE.
+
+    DO NOT START THE RESPONSE WITH AN 'Hello this is Copilot' or similar.
+
+    DO NOT FORMAT THE JSON-ARRAY IN ANY WAY.
 
     For context, here is the full text:
     {script}
