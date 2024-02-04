@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from moviepy.config import change_settings
 
-load_dotenv("../.env")
+load_dotenv(".env")
 
 SESSION_ID = os.getenv("TIKTOK_SESSION_ID")
 

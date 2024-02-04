@@ -2,6 +2,8 @@ import re
 import g4f
 import json
 
+from g4f.Provider import (Bing)
+
 from typing import List
 from termcolor import colored
 
@@ -33,11 +35,16 @@ def generate_script(video_subject: str) -> str:
     Obviously, the script should be related to the subject of the video.
 
     ONLY RETURN THE RAW SCRIPT. DO NOT RETURN ANYTHING ELSE.
+
+    DO NOT FORMAT THE SCRIPT IN ANY WAY.
+
+    MAKE SURE THE SCRIPT IS SHORT AND TO THE POINT.
     """
 
     # Generate script
     response = g4f.ChatCompletion.create(
         model=g4f.models.gpt_35_turbo_16k_0613,
+        provider=Bing,
         messages=[{"role": "user", "content": prompt}],
     )
 
@@ -91,7 +98,8 @@ def get_search_terms(video_subject: str, amount: int, script: str) -> List[str]:
 
     # Generate search terms
     response = g4f.ChatCompletion.create(
-        model=g4f.models.gpt_35_turbo_16k_0613,
+        # model=g4f.models.gpt_35_turbo_16k_0613,
+        model=g4f.models.gpt_4,
         messages=[{"role": "user", "content": prompt}],
     )
 
