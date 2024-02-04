@@ -4,8 +4,14 @@
 # version: 1.0
 # credits: https://github.com/oscie57/tiktok-voice
 
-import threading, requests, base64
+# --- MODIFIED VERSION --- #
+
 from playsound import playsound
+from typing import List
+
+import threading
+import requests
+import base64
 
 VOICES = [
     # DISNEY VOICES
@@ -68,7 +74,7 @@ TEXT_BYTE_LIMIT = 300
 
 
 # create a list by splitting a string, every element has n chars
-def split_string(string: str, chunk_size: int) -> list[str]:
+def split_string(string: str, chunk_size: int) -> List[str]:
     words = string.split()
     result = []
     current_chunk = ""
